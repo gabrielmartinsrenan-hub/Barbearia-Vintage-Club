@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vintage & Club - Barbearia & Estilo Clássico</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts (Playfair Display & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            barber: {
+              50: '#fbf8f3',
+              100: '#f3ece1',
+              400: '#d4af37', // Gold / Dourado principal
+              500: '#b89728',
+              600: '#997a1d',
+              850: '#141416',
+              900: '#0b0b0d',
+              950: '#070708',
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .hero-bg {
+      background: linear-gradient(180deg, rgba(7, 7, 8, 0.7) 0%, rgba(7, 7, 8, 0.95) 100%), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="font-sans bg-barber-950 text-slate-200 antialiased selection:bg-barber-400 selection:text-slate-950">
+
+  <!-- Header / Navigation -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-barber-950/80 backdrop-blur-md border-b border-barber-400/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-full border-2 border-barber-400 text-barber-400 flex items-center justify-center font-serif font-bold text-xl shadow-lg shadow-barber-400/10 group-hover:scale-105 transition-transform">
+            V
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-lg font-bold tracking-wider text-white">VINTAGE<span class="text-barber-400">&</span>CLUB</span>
+            <span class="text-[10px] uppercase tracking-widest text-slate-400">Barbearia & Estilo</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+          <a href="#servicos" class="hover:text-barber-400 transition-colors">Serviços</a>
+          <a href="#experiencia" class="hover:text-barber-400 transition-colors">O Clube</a>
+          <a href="#galeria" class="hover:text-barber-400 transition-colors">Galeria</a>
+          <a href="#barbeiros" class="hover:text-barber-400 transition-colors">Barbeiros</a>
+          <a href="#depoimentos" class="hover:text-barber-400 transition-colors">Avaliações</a>
+        </nav>
+
+        <!-- CTA Action Buttons -->
+        <div class="hidden md:flex items-center gap-4">
+          <button onclick="openModal('vipModal')" class="text-xs font-bold uppercase tracking-wider text-barber-400 border border-barber-400/30 px-4 py-2 rounded-full hover:bg-barber-400/10 transition-colors">
+            Seja Membro
+          </button>
+          <a href="#agendar" class="bg-barber-400 hover:bg-barber-500 text-slate-950 font-bold px-5 py-2.5 rounded-full text-sm shadow-lg shadow-barber-400/20 transition-all hover:scale-105">
+            Agendar Horário
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-2xl text-barber-400 p-2 focus:outline-none" aria-label="Abrir Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-barber-900 border-b border-barber-400/20 px-4 pt-3 pb-6 space-y-3">
+      <a href="#servicos" class="block py-2 text-slate-200 hover:text-barber-400 font-medium">Serviços</a>
+      <a href="#experiencia" class="block py-2 text-slate-200 hover:text-barber-400 font-medium">O Clube</a>
+      <a href="#galeria" class="block py-2 text-slate-200 hover:text-barber-400 font-medium">Galeria</a>
+      <a href="#barbeiros" class="block py-2 text-slate-200 hover:text-barber-400 font-medium">Barbeiros</a>
+      <a href="#depoimentos" class="block py-2 text-slate-200 hover:text-barber-400 font-medium">Avaliações</a>
+      <div class="pt-4 border-t border-barber-400/10 flex flex-col gap-3">
+        <button onclick="openModal('vipModal')" class="w-full text-center py-2.5 text-barber-400 border border-barber-400/40 rounded-xl font-semibold text-xs uppercase tracking-wider">
+          Seja Membro VIP
+        </button>
+        <a href="#agendar" class="w-full text-center bg-barber-400 text-slate-950 py-2.5 rounded-xl font-bold shadow-md">
+          Agendar Horário
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 hero-bg px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+      
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-barber-400/10 border border-barber-400/30 text-xs sm:text-sm font-semibold tracking-widest uppercase text-barber-400">
+        <i class="fa-solid fa-scissors"></i> Tradição & Sofisticação Desde 2014
+      </span>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-white leading-tight">
+        Onde o estilo clássico encontra a <span class="text-barber-400 italic">barbearia moderna.</span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+        Desfrute de cortes de cabelo impecáveis, barbas desenhadas à navalha, cerveja gelada artesanal e um ambiente exclusivo para cavalheiros.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="#agendar" class="w-full sm:w-auto bg-barber-400 hover:bg-barber-500 text-slate-950 font-bold px-8 py-4 rounded-full text-base shadow-xl shadow-barber-400/20 transition-all hover:scale-105 flex items-center justify-center gap-2">
+          <i class="fa-regular fa-calendar-check"></i> Agendar Agora
+        </a>
+        <a href="#servicos" class="w-full sm:w-auto bg-barber-850 hover:bg-barber-850/80 text-white border border-barber-400/30 font-semibold px-8 py-4 rounded-full text-base transition-all flex items-center justify-center gap-2">
+          Ver Tabela de Preços
+        </a>
+      </div>
+
+      <!-- Quick Highlights -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto border-t border-barber-400/10 text-left">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-barber-400/10 text-barber-400 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-beer-mug-empty"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">Bar & Lounge</h4>
+            <p class="text-xs text-slate-400">Chopp cortesia</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-barber-400/10 text-barber-400 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-mug-hot"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">Café Expresso</h4>
+            <p class="text-xs text-slate-400">Grãos selecionados</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 col-span-2 md:col-span-1">
+          <div class="w-10 h-10 rounded-full bg-barber-400/10 text-barber-400 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-car"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-white">Estacionamento</h4>
+            <p class="text-xs text-slate-400">Manobrista grátis</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="servicos" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <span class="text-barber-400 text-xs font-bold tracking-widest uppercase">Nossos Cuidados</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Serviços & Preços</h2>
+      <p class="text-slate-400 text-sm">Trabalhos artesanais executados com técnica refinada e produtos importados.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Service 1 -->
+      <div class="bg-barber-900 border border-barber-400/10 rounded-3xl p-8 hover:border-barber-400/40 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-barber-400/10 text-barber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-scissors"></i>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-barber-400/10 text-barber-400">45 min</span>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-white mb-2">Corte Clássico ou Moderno</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Corte à tesoura ou máquina, com lavagem com shampoo premium, massagem capilar e finalização com pomada.</p>
+        </div>
+        <div class="pt-4 border-t border-barber-400/10 flex items-center justify-between">
+          <span class="text-2xl font-serif font-bold text-barber-400">R$ 75</span>
+          <a href="#agendar" class="bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="bg-barber-900 border border-barber-400/10 rounded-3xl p-8 hover:border-barber-400/40 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-barber-400/10 text-barber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-spray-can-sparkles"></i>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-barber-400/10 text-barber-400">40 min</span>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-white mb-2">Barba Terapia à Navalha</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Toalhas quentes com óleos essenciais, aplicação de espuma quente, barbear com navalha e pós-barba calmante.</p>
+        </div>
+        <div class="pt-4 border-t border-barber-400/10 flex items-center justify-between">
+          <span class="text-2xl font-serif font-bold text-barber-400">R$ 65</span>
+          <a href="#agendar" class="bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="bg-barber-900 border border-barber-400/10 rounded-3xl p-8 hover:border-barber-400/40 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-barber-400/10 text-barber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-barber-400/10 text-barber-400">1h 15m</span>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-white mb-2">Combo Executivo (Cabelo + Barba)</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Nosso serviço completo definitivo. Inclui corte de cabelo, barba terapia completa e chopp artesanal cortesia.</p>
+        </div>
+        <div class="pt-4 border-t border-barber-400/10 flex items-center justify-between">
+          <span class="text-2xl font-serif font-bold text-barber-400">R$ 120</span>
+          <a href="#agendar" class="bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="bg-barber-900 border border-barber-400/10 rounded-3xl p-8 hover:border-barber-400/40 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-barber-400/10 text-barber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-child"></i>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-barber-400/10 text-barber-400">30 min</span>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-white mb-2">Corte Infantil (Até 12 anos)</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Paciência e cuidado especial para o visual dos pequenos cavalheiros com direito a suco ou refrigerante.</p>
+        </div>
+        <div class="pt-4 border-t border-barber-400/10 flex items-center justify-between">
+          <span class="text-2xl font-serif font-bold text-barber-400">R$ 55</span>
+          <a href="#agendar" class="bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="bg-barber-900 border border-barber-400/10 rounded-3xl p-8 hover:border-barber-400/40 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-barber-400/10 text-barber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-barber-400/10 text-barber-400">60 min</span>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-white mb-2">Pigmentação & Camuflagem</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Disfarce de fios brancos na barba ou cabelo com aspecto totalmente natural e duradouro.</p>
+        </div>
+        <div class="pt-4 border-t border-barber-400/10 flex items-center justify-between">
+          <span class="text-2xl font-serif font-bold text-barber-400">R$ 70</span>
+          <a href="#agendar" class="bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+            Agendar
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="bg-barber-900 border border-barber-400/10 rounded-3xl p-8 hover:border-barber-400/40 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-barber-400/10 text-barber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-barber-400/10 text-barber-400">30 min</span>
+          </div>
+          <h3 class="text-xl font-bold font-serif text-white mb-2">Tratamento Facial & Esfoliação</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">Limpeza de pele profunda, remoção de cravos, máscara de carvão ativado e hidratação revigorante.</p>
+        </div>
+        <div class="pt-4 border-t border-barber-400/10 flex items-center justify-between">
+          <span class="text-2xl font-serif font-bold text-barber-400">R$ 80</span>
+          <a href="#agendar" class="bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors">
+            Agendar
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Club Section -->
+  <section id="experiencia" class="py-24 bg-barber-900/60 border-y border-barber-400/10 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        <div class="space-y-6">
+          <span class="text-barber-400 text-xs font-bold tracking-widest uppercase">Mais que uma barbearia</span>
+          <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white leading-tight">
+            Um refúgio exclusivo projetado para o seu bem-estar.
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Inspirada nas barbearias clássicas de Chicago dos anos 1920, a Vintage & Club combina o charme da estética vintage com poltronas de couro reclinables importadas, som ambiente de vinil e atendimento de primeira classe.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="flex items-center gap-3 bg-barber-900 p-4 rounded-2xl border border-barber-400/10">
+              <i class="fa-solid fa-check text-barber-400"></i>
+              <span class="text-sm font-medium text-white">Whisky & Chopp Artesanal</span>
+            </div>
+            <div class="flex items-center gap-3 bg-barber-900 p-4 rounded-2xl border border-barber-400/10">
+              <i class="fa-solid fa-check text-barber-400"></i>
+              <span class="text-sm font-medium text-white">Produtos Importados</span>
+            </div>
+            <div class="flex items-center gap-3 bg-barber-900 p-4 rounded-2xl border border-barber-400/10">
+              <i class="fa-solid fa-check text-barber-400"></i>
+              <span class="text-sm font-medium text-white">Mesa de Sinuca VIP</span>
+            </div>
+            <div class="flex items-center gap-3 bg-barber-900 p-4 rounded-2xl border border-barber-400/10">
+              <i class="fa-solid fa-check text-barber-400"></i>
+              <span class="text-sm font-medium text-white">Wi-Fi Ultrarrápido</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=600&q=80" alt="Interior Barbearia" class="rounded-3xl object-cover h-80 w-full shadow-2xl border border-barber-400/20 hover:scale-105 transition-transform duration-300">
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=80" alt="Barbeiro trabalhando" class="rounded-3xl object-cover h-80 w-full shadow-2xl translate-y-8 border border-barber-400/20 hover:scale-105 transition-transform duration-300">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="galeria" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+      <span class="text-barber-400 text-xs font-bold tracking-widest uppercase">Portfólio</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Trabalhos Realizados</h2>
+      <p class="text-slate-400 text-sm">Confira os cortes, barbas e estilos entregues por nossa equipe.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="relative group overflow-hidden rounded-3xl h-72 border border-barber-400/10">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" alt="Corte Degradê" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-barber-950/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <div>
+            <h4 class="font-bold text-white text-base">Fade Moderno</h4>
+            <p class="text-xs text-barber-400">Por Ricardo Mendes</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group overflow-hidden rounded-3xl h-72 border border-barber-400/10">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Barba Alinhada" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-barber-950/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <div>
+            <h4 class="font-bold text-white text-base">Barba Lenhador</h4>
+            <p class="text-xs text-barber-400">Por Marcos Silva</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group overflow-hidden rounded-3xl h-72 border border-barber-400/10">
+        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=600&q=80" alt="Corte Social" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-barber-950/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <div>
+            <h4 class="font-bold text-white text-base">Social Executivo</h4>
+            <p class="text-xs text-barber-400">Por André Souza</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group overflow-hidden rounded-3xl h-72 border border-barber-400/10">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Estilo Vintage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-barber-950/90 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+          <div>
+            <h4 class="font-bold text-white text-base">Pompadour Clássico</h4>
+            <p class="text-xs text-barber-400">Por Ricardo Mendes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barbers Section -->
+  <section id="barbeiros" class="py-24 bg-barber-900/40 border-t border-barber-400/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="text-barber-400 text-xs font-bold tracking-widest uppercase">Profissionais</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Nossos Barbeiros</h2>
+        <p class="text-slate-400 text-sm">Especialistas com anos de experiência em visagismo e navalha.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-barber-900 border border-barber-400/10 rounded-3xl overflow-hidden text-center p-6 space-y-4">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ricardo Mendes" class="w-32 h-32 rounded-full object-cover mx-auto border-2 border-barber-400 shadow-lg">
+          <div>
+            <h3 class="text-xl font-bold font-serif text-white">Ricardo Mendes</h3>
+            <p class="text-xs text-barber-400 font-semibold uppercase tracking-wider mt-1">Mestre Barbeiro (10 anos)</p>
+          </div>
+          <p class="text-slate-400 text-xs px-4">Especialista em cortes clássicos ingleses, pompadour e barbas esculpidas.</p>
+          <div class="pt-2">
+            <a href="#agendar" class="inline-block bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 text-xs font-bold px-5 py-2.5 rounded-xl transition-colors">
+              Marcar com Ricardo
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-barber-900 border border-barber-400/10 rounded-3xl overflow-hidden text-center p-6 space-y-4">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Marcos Silva" class="w-32 h-32 rounded-full object-cover mx-auto border-2 border-barber-400 shadow-lg">
+          <div>
+            <h3 class="text-xl font-bold font-serif text-white">Marcos Silva</h3>
+            <p class="text-xs text-barber-400 font-semibold uppercase tracking-wider mt-1">Especialista Fade & Design</p>
+          </div>
+          <p class="text-slate-400 text-xs px-4">Reconhecido pelos melhores degradês da região e cortes modernos freestyle.</p>
+          <div class="pt-2">
+            <a href="#agendar" class="inline-block bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 text-xs font-bold px-5 py-2.5 rounded-xl transition-colors">
+              Marcar com Marcos
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-barber-900 border border-barber-400/10 rounded-3xl overflow-hidden text-center p-6 space-y-4">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="André Souza" class="w-32 h-32 rounded-full object-cover mx-auto border-2 border-barber-400 shadow-lg">
+          <div>
+            <h3 class="text-xl font-bold font-serif text-white">André Souza</h3>
+            <p class="text-xs text-barber-400 font-semibold uppercase tracking-wider mt-1">Visagista & Barba Terapia</p>
+          </div>
+          <p class="text-slate-400 text-xs px-4">Focado em atendimento executivo, harmonização de barba e tratamentos faciais.</p>
+          <div class="pt-2">
+            <a href="#agendar" class="inline-block bg-barber-850 hover:bg-barber-400 hover:text-slate-950 text-slate-200 text-xs font-bold px-5 py-2.5 rounded-xl transition-colors">
+              Marcar com André
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section (Interactive Form) -->
+  <section id="agendar" class="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-barber-900 border border-barber-400/30 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+      
+      <div class="absolute top-0 right-0 w-64 h-64 bg-barber-400/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
+        <span class="text-barber-400 text-xs font-bold tracking-widest uppercase">Reserva Online</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Agende Seu Horário</h2>
+        <p class="text-slate-400 text-sm">Escolha o serviço, profissional e o melhor horário para você.</p>
+      </div>
+
+      <form onsubmit="handleBooking(event)" class="space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Seu Nome Completo</label>
+            <input type="text" required placeholder="Ex: Roberto Carlos" class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/25 text-white placeholder-slate-500 focus:outline-none focus:border-barber-400 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Telefone / WhatsApp</label>
+            <input type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/25 text-white placeholder-slate-500 focus:outline-none focus:border-barber-400 text-sm">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Serviço Desejado</label>
+            <select required class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/25 text-white focus:outline-none focus:border-barber-400 text-sm">
+              <option value="" disabled selected>Selecione o serviço</option>
+              <option>Corte Clássico ou Moderno (R$ 75)</option>
+              <option>Barba Terapia à Navalha (R$ 65)</option>
+              <option>Combo Executivo (R$ 120)</option>
+              <option>Corte Infantil (R$ 55)</option>
+              <option>Pigmentação & Camuflagem (R$ 70)</option>
+              <option>Tratamento Facial (R$ 80)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Barbeiro Preferido</label>
+            <select required class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/25 text-white focus:outline-none focus:border-barber-400 text-sm">
+              <option value="" disabled selected>Qualquer profissional</option>
+              <option>Ricardo Mendes</option>
+              <option>Marcos Silva</option>
+              <option>André Souza</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-300 mb-2">Data do Atendimento</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/25 text-white focus:outline-none focus:border-barber-400 text-sm">
+          </div>
+        </div>
+
+        <div class="pt-4 text-center">
+          <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-barber-400 hover:bg-barber-500 text-slate-950 font-bold rounded-xl text-sm shadow-xl shadow-barber-400/25 transition-all">
+            Confirmar Agendamento
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="depoimentos" class="py-24 bg-barber-900/30 border-t border-barber-400/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="text-barber-400 text-xs font-bold tracking-widest uppercase">Opiniões</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">O Que Nossos Clientes Dizem</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-barber-900 p-8 rounded-3xl border border-barber-400/10 space-y-4">
+          <div class="flex text-barber-400 gap-1 text-sm">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm italic leading-relaxed">
+            "Melhor barbearia da cidade sem dúvida. O atendimento com chopp artesanal e o corte do Ricardo são impecáveis. Virei cliente fiel!"
+          </p>
+          <div class="pt-4 border-t border-barber-400/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-barber-400/20 text-barber-400 font-bold flex items-center justify-center text-sm">GS</div>
+            <div>
+              <h5 class="font-bold text-white text-sm">Gabriel Santos</h5>
+              <p class="text-xs text-slate-400">Cliente há 2 anos</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-barber-900 p-8 rounded-3xl border border-barber-400/10 space-y-4">
+          <div class="flex text-barber-400 gap-1 text-sm">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm italic leading-relaxed">
+            "O ambiente é incrível, estilo clube de cavalheiros mesmo. A barba terapia com toalha quente é um ritual obrigatório para o meu fim de semana."
+          </p>
+          <div class="pt-4 border-t border-barber-400/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-barber-400/20 text-barber-400 font-bold flex items-center justify-center text-sm">FA</div>
+            <div>
+              <h5 class="font-bold text-white text-sm">Felipe Almeida</h5>
+              <p class="text-xs text-slate-400">Cliente há 1 ano</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-barber-900 p-8 rounded-3xl border border-barber-400/10 space-y-4">
+          <div class="flex text-barber-400 gap-1 text-sm">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 text-sm italic leading-relaxed">
+            "Levo meu filho de 8 anos sempre com o Marcos. Eles têm muita paciência e o garoto adora o visual moderno que ele faz. Parabéns à equipe!"
+          </p>
+          <div class="pt-4 border-t border-barber-400/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-barber-400/20 text-barber-400 font-bold flex items-center justify-center text-sm">LN</div>
+            <div>
+              <h5 class="font-bold text-white text-sm">Lucas Nogueira</h5>
+              <p class="text-xs text-slate-400">Cliente VIP</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-barber-950 text-slate-400 pt-16 pb-12 border-t border-barber-400/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full border-2 border-barber-400 text-barber-400 flex items-center justify-center font-serif font-bold text-base">V</div>
+          <span class="font-serif text-lg font-bold text-white">VINTAGE<span class="text-barber-400">&</span>CLUB</span>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          A barbearia definitiva para o homem moderno que valoriza tradição, bom gosto e excelência.
+        </p>
+        <div class="flex gap-4 text-barber-400">
+          <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+          <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook text-lg"></i></a>
+          <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Horário de Funcionamento</h4>
+        <ul class="space-y-2 text-xs text-slate-400">
+          <li>Segunda a Sexta: 09:00 - 20:00</li>
+          <li>Sábado: 09:00 - 18:00</li>
+          <li>Domingo: Fechado (Disponível p/ Eventos)</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Links Rápidos</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#servicos" class="hover:text-barber-400 transition-colors">Tabela de Preços</a></li>
+          <li><a href="#experiencia" class="hover:text-barber-400 transition-colors">O Clube & Lounge</a></li>
+          <li><a href="#galeria" class="hover:text-barber-400 transition-colors">Galeria de Fotos</a></li>
+          <li><a href="#agendar" class="hover:text-barber-400 transition-colors">Agendar Horário</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white text-xs font-bold uppercase tracking-widest mb-4">Contato & Localização</h4>
+        <p class="text-xs text-slate-400 mb-2"><i class="fa-solid fa-location-dot mr-2 text-barber-400"></i> Rua dos Barbeiros, 450 - Jardins, SP</p>
+        <p class="text-xs text-slate-400 mb-2"><i class="fa-solid fa-phone mr-2 text-barber-400"></i> (11) 3333-4444</p>
+        <p class="text-xs text-slate-400"><i class="fa-solid fa-envelope mr-2 text-barber-400"></i> contato@vintageclub.com</p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-barber-400/10 text-center text-xs text-slate-600">
+      <p>&copy; 2026 Vintage & Club Barbearia. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- VIP Modal -->
+  <div id="vipModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-barber-950/80 backdrop-blur-sm hidden transition-opacity">
+    <div class="bg-barber-900 border border-barber-400/30 rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
+      <button onclick="closeModal('vipModal')" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-full border-2 border-barber-400 text-barber-400 flex items-center justify-center font-serif font-bold text-xl mx-auto mb-3">
+          VIP
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-white">Clube de Membros</h3>
+        <p class="text-xs text-slate-400 mt-1">Tenha cortes ilimitados, descontos e prioridade na agenda.</p>
+      </div>
+
+      <form onsubmit="handleVipSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-300 mb-1">Nome Completo</label>
+          <input type="text" required placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/30 text-white text-sm focus:outline-none focus:border-barber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-300 mb-1">E-mail</label>
+          <input type="email" required placeholder="seu@email.com" class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/30 text-white text-sm focus:outline-none focus:border-barber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-300 mb-1">WhatsApp</label>
+          <input type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl bg-barber-850 border border-barber-400/30 text-white text-sm focus:outline-none focus:border-barber-400">
+        </div>
+        <button type="submit" class="w-full py-3.5 bg-barber-400 hover:bg-barber-500 text-slate-950 font-bold rounded-xl text-sm transition-all mt-2 shadow-lg shadow-barber-400/20">
+          Quero ser Membro VIP (R$ 199/mês)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-barber-900 text-white border border-barber-400/30 px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="text-barber-400 text-lg">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <span id="toastMsg" class="text-sm font-medium">Notificação</span>
+  </div>
+
+  <!-- JavaScript Interactions -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Modal Control Functions
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Form Handlers
+    function handleBooking(e) {
+      e.preventDefault();
+      e.target.reset();
+      showToast('Agendamento realizado com sucesso! Entraremos em contato via WhatsApp.');
+    }
+
+    function handleVipSubmit(e) {
+      e.preventDefault();
+      closeModal('vipModal');
+      e.target.reset();
+      showToast('Parabéns! Solicitação VIP enviada com sucesso.');
+    }
+
+    // Toast Notification System
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      
+      toastMsg.innerText = message;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
